@@ -5,11 +5,14 @@ import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useState } from 'react';
-
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
 
+  const quantity = useSelector(state => state.cart.quantity);
+  console.log(quantity)
 
   return (
     <div className=" flex justify-between p-4 bg-black text-white w-full items-center text-center">
@@ -26,9 +29,11 @@ const Navbar = () => {
       <div className="other flex flex-row justify-end sm:mr-5" >
         <p className="sm:mr-8 sm:text-lg mr-2 text-sm">REGISTER</p>
         <p className="sm:mr-8 sm:text-lg mr-2 text-sm whitespace-nowrap sm:whitespace-normal">SIGN IN</p>
-        <Badge badgeContent={3} color="secondary">
-          <ShoppingCartOutlined />
-        </Badge>
+        <Link to="/cart">
+          <Badge badgeContent={quantity} color="secondary">
+            <ShoppingCartOutlined />
+          </Badge>
+        </Link>
       </div>
     </div >
   );

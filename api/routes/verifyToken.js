@@ -20,7 +20,7 @@ const verifyTokenAuthorization = (req, res, next) => {
         if (req.user.id === req.params.id || req.user.isAdmin) {
             next();
         } else {
-            res.status(403).json("Your are not allowed to do that");
+            return res.status(403).json("Your are not allowed to do that");
         }
     });
 };
@@ -30,7 +30,7 @@ const verifyTokenAndAdmin = (req, res, next) => {
         if (req.user.isAdmin) {
             next();
         } else {
-            res.status(403).json("Your are not allowed to do that");
+            return res.status(403).json("Your are not allowed to do that");
         }
     });
 };
