@@ -1,11 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { Add, AddCircle, Brightness1, Remove, RemoveCircle } from '@material-ui/icons'
 import { useSelector } from 'react-redux'
 import stripeCheckout from "react-stripe-checkout"
+import StripeCheckout from 'react-stripe-checkout'
+import { userRequest } from "../requestMethods";
+import { useNavigate } from 'react-router-dom'
+const KEY = "pk_test_51NR0BLSIehqGU5OCxvVcxIthBoEq3FicztvTp5dze0lKEeJxkeQrm0eh0RiFVX490k8nodGY2Cl72pQ0Cxt4vXWH00R9OH6wGR"
 const Cart = () => {
     const cart = useSelector(state => state.cart);
+    const [stripeToken, setStripeToken] = useState(null);
+    const navigate = useNavigate();
+    const onToken = (token) => {
+        setStripeToken(token);
+    }
+    console.log(stripeToken);
+    useEffect(() => {
+        const makeRequest = async () => {
+            try {
+                const res = await userRequest.post("/checkout/payment", {
+
+                    amount: cart.total,
+
+                });
+                navigate("/success", { data: res.data });
+                console.log(res.data);
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        stripeToken && makeRequest();
+    }, [stripeToken, cart.total, navigate])
     return (
         <>
             <Navbar />
@@ -59,7 +85,10 @@ const Cart = () => {
                             <p className='font-semibold'>Total</p>
                             <p>$ {cart.total}</p>
                         </div>
-                        <button className='w-full m-auto border-black bg-black text-white p-2'>CHECKOUT</button>
+                        <StripeCheckout name="Atlas" billingAddress shippingAddress description={`Total is $${cart.total}`} amount={cart.total * 100} token={onToken} stripeKey={KEY}>
+
+                            <button className='w-full m-auto border-black bg-black text-white p-2'>CHECKOUT</button>
+                        </StripeCheckout>
                     </div>
                 </div>
 
