@@ -21,6 +21,10 @@ app.use(cors(
         credentials: true
     }
 ));
+
+app.get("/", (req, res) => {
+    res.send("user test is scusseful");
+});
 app.use(express.json());
 app.use(express.json()); //so that i can read json file too
 app.use("/api/auth", authRoute);
