@@ -16,9 +16,7 @@ mongoose
     .catch(err => console.log(err));
 app.use(cors(
     {
-        origin: ["https://atlas-client-nine.vercel.app"],
-        methods:["POST", "GET"],
-        credentials: true
+        origin: "*",
     }
 ));
 
