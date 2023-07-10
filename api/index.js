@@ -14,13 +14,7 @@ mongoose
     .connect(process.env.MONGO_URL)
     .then(() => console.log("Database connected"))
     .catch(err => console.log(err));
-app.use(cors(
-    {
-        origin:["https://atlas-client-nine.vercel.app"],
-        methods:["POST", "GET"],
-        credentials: true
-    }
-));
+app.use(cors());
 app.use(express.json());
 app.use(express.json()); //so that i can read json file too
 app.use("/api/auth", authRoute);
