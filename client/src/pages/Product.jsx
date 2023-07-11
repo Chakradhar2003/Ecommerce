@@ -29,7 +29,7 @@ const Product = () => {
 
     const reduce = () => {
 
-        if (quantity == 1) return;
+        if (quantity === 1) return;
         else setQuantity((quantity) => quantity - 1);
     }
     const increase = () => {

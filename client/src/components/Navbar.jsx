@@ -15,13 +15,13 @@ const Navbar = () => {
   console.log(quantity)
 
   return (
-    <div className=" flex justify-between p-4 bg-black text-white w-full items-center text-center">
+    <div className=" flex justify-between p-4 bg-[#FFFFFF] backdrop-filter backdrop-blur-xl bg-opacity-30 text-black w-full items-center text-center sticky top-[0] z-10 ">
       <div className="flex flex-row sm:justify-between items-center">
         <div className="title font-bold sm:text-3xl ">
           ATLAS
         </div>
-        <div className="search-box sm:ml-10  border border-white rounded-lg sm:p-1 flex sm:w-3/5 p-0 w-1/2 ml-3">
-          <input type="text" className="bg-black text-white outline-none w-full ml-2 rounded-lg" placeholder="Search" />
+        <div className="search-box sm:ml-10  border border-black rounded-lg sm:p-1 flex sm:w-3/5 p-0 w-1/2 ml-3">
+          <input type="text" className="bg-inherit text-white outline-none w-full ml-2 rounded-lg" placeholder="Search" />
           <Search className="" />
         </div>
       </div>

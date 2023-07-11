@@ -7,8 +7,8 @@ import c3 from './c3.jpg'
 export default function Categories() {
     return (
         <>
-            <div><h1 className='text-center font-extrabold p-5 sm:text-5xl text-3xl text-white bg-black w-full '>Categories</h1></div>
-            <div className=' flex sm:flex-row flex-col justify-between bg-black p-4 pt-0 text-white'>
+            <div><h1 className='text-center font-extrabold p-5 sm:text-5xl text-3xl text-[#28B4D0] bg-[#FFF7EC] w-full '>Categories</h1></div>
+            <div className=' flex sm:flex-row flex-col justify-between bg-[#FFF7EC] p-4 pt-0 text-white'>
 
                 <CategoryItem img1={c3} title="Cool summer T-shirts" cat="" />
                 <CategoryItem img1={c2} title="Stylish shoes" />
